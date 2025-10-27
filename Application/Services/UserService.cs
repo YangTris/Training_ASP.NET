@@ -4,6 +4,7 @@ using Application.IServices;
 using Core.Entities;
 using Core.Exceptions;
 using Core.IRepositories;
+using Microsoft.AspNetCore.Identity;
 using Shared.Models;
 
 namespace Application.Services
@@ -11,10 +12,11 @@ namespace Application.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-
-        public UserService(IUserRepository userRepository)
+        private readonly UserManager<User> _userManager;
+        public UserService(IUserRepository userRepository, UserManager<User> userManager)
         {
             _userRepository = userRepository;
+            _userManager = userManager;
         }
 
         public async Task AssignRoleAsync(string userId, string role = "User")
@@ -30,7 +32,20 @@ namespace Application.Services
 
         public async Task<UserCreateResponseDTO> CreateUserAsync(UserCreateRequestDTO userCreateRequestDTO)
         {
-            var user = new User(userCreateRequestDTO.FullName);
+            var emailValidator = new System.ComponentModel.DataAnnotations.EmailAddressAttribute();
+            if (string.IsNullOrWhiteSpace(userCreateRequestDTO.Email) || !emailValidator.IsValid(userCreateRequestDTO.Email))
+                throw new BadRequestException("Email is not a valid email address.");
+
+            var existingByEmail = await _userManager.FindByEmailAsync(userCreateRequestDTO.Email);
+            if (existingByEmail != null)
+                throw new ConflictException($"Email {userCreateRequestDTO.Email} is already in use.");
+
+            var user = new User
+            {
+                FullName = userCreateRequestDTO.FullName,
+                Email = userCreateRequestDTO.Email,
+                UserName = userCreateRequestDTO.Email
+            };
 
             var createdUser = await _userRepository.CreateAsync(user, userCreateRequestDTO.Password);
 

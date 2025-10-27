@@ -4,14 +4,14 @@
     "C:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj": {
+    "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj",
+        "projectUniqueName": "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj",
+        "projectPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\dvtri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\obj\\",
+        "outputPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dvtri\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -95,8 +95,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj"
+              "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj": {
+                "projectPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj"
               }
             }
           }

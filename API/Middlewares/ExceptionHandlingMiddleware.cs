@@ -48,6 +48,11 @@ namespace API.Middlewares
                     logMessage = "Unprocessable Entity: " + ex.Message;
                     _logger.LogError(ex, logMessage);
                     break;
+                case ConflictException:
+                    statusCode = HttpStatusCode.Conflict;
+                    logMessage = "Conflict: " + ex.Message;
+                    _logger.LogError(ex, logMessage);
+                    break;
                 default:
                     statusCode = HttpStatusCode.InternalServerError;
                     logMessage = "Internal Server Error: " + ex.Message;

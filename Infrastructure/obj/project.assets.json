@@ -4944,8 +4944,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj": {
-              "projectPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj"
+            "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj": {
+              "projectPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj"
             }
           }
         }

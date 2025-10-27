@@ -13,3 +13,4 @@ C:\Users\dvtri\Desktop\MockTest\Core\bin\Debug\net9.0\Shared.dll
 C:\Users\dvtri\Desktop\MockTest\Core\bin\Debug\net9.0\Shared.pdb
 C:\Users\dvtri\Desktop\MockTest\Core\obj\Debug\net9.0\Core.csproj.AssemblyReference.cache
 C:\Users\dvtri\Desktop\MockTest\Core\obj\Debug\net9.0\Core.csproj.Up2Date
+C:\Users\dvtri\Desktop\MockTest\Core\obj\Debug\net9.0\Core.sourcelink.json

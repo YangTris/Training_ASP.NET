@@ -24,7 +24,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{categoryId}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "User")]
         public async Task<ActionResult<CategoryDetailDTO>> GetCategoryById(Guid categoryId)
         {
             var category = await _categoryService.GetCategoryByIdAsync(categoryId);

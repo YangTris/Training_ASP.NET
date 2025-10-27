@@ -15,11 +15,6 @@ namespace Core.Entities
 
         public User() { }
 
-        public User(string fullName)
-        {
-            SetUser(fullName);
-        }
-
         public void SetUser(string fullName)
         {
             if (string.IsNullOrWhiteSpace(fullName))
