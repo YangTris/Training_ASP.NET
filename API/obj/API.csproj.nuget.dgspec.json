@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dvtri\\Desktop\\MockTest\\APi\\API.csproj": {}
+    "C:\\Users\\dvtri\\Desktop\\MockTest\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dvtri\\Desktop\\MockTest\\APi\\API.csproj": {
+    "C:\\Users\\dvtri\\Desktop\\MockTest\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dvtri\\Desktop\\MockTest\\APi\\API.csproj",
+        "projectUniqueName": "C:\\Users\\dvtri\\Desktop\\MockTest\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\APi\\API.csproj",
+        "projectPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\API\\API.csproj",
         "packagesPath": "C:\\Users\\dvtri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\APi\\obj\\",
+        "outputPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dvtri\\AppData\\Roaming\\NuGet\\NuGet.Config"
