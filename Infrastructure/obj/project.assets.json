@@ -4925,11 +4925,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj",
+      "projectPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\dvtri\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dvtri\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -4944,8 +4944,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj": {
-              "projectPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj"
+            "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj": {
+              "projectPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj"
             }
           }
         }

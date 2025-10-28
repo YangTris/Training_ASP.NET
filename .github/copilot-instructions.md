@@ -4,10 +4,12 @@
 
 ## High-level architecture notes
 
-- Web/API: `API/Program.cs` wires up DI (services+repositories), Swagger, Identity, and middleware. See `API/Middlewares/ExceptionHandlingMiddleware.cs` for global exception handling.
+- Web/API: `API/Program.cs` wires up DI (services+repositories), Swagger, JWT authentication, Identity, and middleware. See `API/Middlewares/ExceptionHandlingMiddleware.cs` for global exception handling.
+- Authentication: JWT Bearer tokens configured in `Program.cs`. Login via `POST /api/auth/login` returns a token. Protected endpoints use `[Authorize]` or `[Authorize(Roles = "Admin")]`.
 - Persistence: `Infrastructure/ApplicationDbContext.cs` inherits `IdentityDbContext<User>` and applies global query filters for soft delete (`IsDeleted`). Migrations are in `Infrastructure/Migrations/`.
-- Domain & DTOs: Domain entities are in `Core/Entities` (e.g., `Category.cs`); DTOs live under `Application/DTOs/Category` and services in `Application/Services` (e.g., `CategoryService.cs`).
-- Repos & services: Repositories implement `Core.IRepositories` under `Infrastructure.Repositories` and are registered in `API/Program.cs` (e.g., `ICategoryRepository` -> `CategoryRepository`, `ICategoryService` -> `CategoryService`).
+- Domain & DTOs: Domain entities are in `Core/Entities` (e.g., `Category.cs`, `Product.cs`, `Order.cs`); DTOs live under `Application/DTOs/*` and services in `Application/Services`.
+- Repos & services: Repositories implement `Core.IRepositories` under `Infrastructure.Repositories` and are registered in `API/Program.cs`.
+- Key workflows: Cart → Order (create order from cart items), Product creation (adds default image), User seeding (admin@example.com and user@example.com with password P@ssw0rd).
 
 ## Important conventions and patterns (project-specific)
 

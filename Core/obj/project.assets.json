@@ -566,11 +566,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj",
+      "projectUniqueName": "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj",
       "projectName": "Core",
-      "projectPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj",
+      "projectPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj",
       "packagesPath": "C:\\Users\\dvtri\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\obj\\",
+      "outputPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dvtri\\AppData\\Roaming\\NuGet\\NuGet.Config"

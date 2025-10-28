@@ -31,13 +31,13 @@ namespace API.Controllers
         [Authorize(Roles = "User")]
         public IActionResult TestAuth()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var roles = User.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value);
             return Ok(new
             {
                 message = "Authentication is working!",
-                userId = userId,
-                roles = roles
+                userId = id,
+                userRoles = roles
             });
         }
 

@@ -20,11 +20,13 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICartService, CartService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICartRepository, CartRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -139,7 +141,7 @@ using (var scope = app.Services.CreateScope())
     }
 
     // Seed Admin account
-    var adminEmail = "admin@example.com";
+    var adminEmail = "admin@gmail.com";
     var adminUser = await userManager.FindByEmailAsync(adminEmail);
     if (adminUser == null)
     {
@@ -160,7 +162,7 @@ using (var scope = app.Services.CreateScope())
     }
 
     // Seed regular User account
-    var userEmail = "user@example.com";
+    var userEmail = "user@gmail.com";
     var regularUser = await userManager.FindByEmailAsync(userEmail);
     if (regularUser == null)
     {

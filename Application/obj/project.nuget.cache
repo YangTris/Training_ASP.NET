@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZACQcyWLGEo=",
+  "dgSpecHash": "BO3sDuhluyo=",
   "success": true,
-  "projectFilePath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Application\\Application.csproj",
+  "projectFilePath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dvtri\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\9.0.9\\microsoft.aspnetcore.cryptography.internal.9.0.9.nupkg.sha512",
     "C:\\Users\\dvtri\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\9.0.9\\microsoft.aspnetcore.cryptography.keyderivation.9.0.9.nupkg.sha512",
