@@ -31,7 +31,15 @@ namespace Application.Services
                 Name = productDTO.Name,
                 Description = productDTO.Description,
                 Price = productDTO.Price,
-                CategoryId = productDTO.CategoryId
+                CategoryId = productDTO.CategoryId,
+                Images = new List<ProductImage>
+                {
+                    new ProductImage
+                    {
+                        ImageUrl = "https://vyghvmdysxqvocgvytoe.supabase.co/storage/v1/object/public/Training_img/default_img.jpg",
+                        IsMain = true
+                    }
+                }
             };
 
             var created = await _productRepository.CreateAsync(product);

@@ -2,6 +2,7 @@ using Application.DTOs.Auth;
 using Application.DTOs.User;
 using Application.IServices;
 using Core.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -24,6 +25,26 @@ namespace API.Controllers
             _userService = userService;
             _userManager = userManager;
             _configuration = configuration;
+        }
+
+        [HttpGet("test-auth")]
+        [Authorize(Roles = "User")]
+        public IActionResult TestAuth()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var roles = User.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value);
+            return Ok(new
+            {
+                message = "Authentication is working!",
+                userId = userId,
+                roles = roles
+            });
+        }
+
+        [HttpGet("test-public")]
+        public IActionResult TestPublic()
+        {
+            return Ok(new { message = "This is a public endpoint" });
         }
 
         [HttpPost("register")]
@@ -54,8 +75,9 @@ namespace API.Controllers
 
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.Id),
-                new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName ?? user.Email ?? string.Empty),
+                // new Claim(JwtRegisteredClaimNames.Sub, user.Id),
+                // new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName ?? user.Email ?? string.Empty),
+                new Claim(ClaimTypes.NameIdentifier, user.Id),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email ?? string.Empty),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };

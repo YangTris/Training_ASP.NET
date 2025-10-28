@@ -29,8 +29,8 @@
               "c:\\Users\\dvtri\\Desktop\\MockTest\\Application\\Application.csproj": {
                 "projectPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Application\\Application.csproj"
               },
-              "C:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj"
+              "c:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -225,14 +225,14 @@
         }
       }
     },
-    "C:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj": {
+    "c:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "c:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\dvtri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\obj\\",
+        "outputPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dvtri\\AppData\\Roaming\\NuGet\\NuGet.Config"

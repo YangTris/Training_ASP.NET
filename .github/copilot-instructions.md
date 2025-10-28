@@ -24,7 +24,7 @@
 - EF Core migrations (project separation):
   - Add migration: `dotnet ef migrations add <Name> --project Infrastructure --startup-project API`
   - Apply migration: `dotnet ef database update --project Infrastructure --startup-project API`
-  (Reason: DbContext lives in `Infrastructure`, but the startup application with configuration is `API`.)
+    (Reason: DbContext lives in `Infrastructure`, but the startup application with configuration is `API`.)
 
 ## Files to check when changing behavior
 
@@ -44,13 +44,20 @@
 - Soft-delete in repository (follow `CategoryRepository.DeleteAsync`):
 
   category.IsDeleted = true;
-  _context.Categories.Update(category);
-  await _context.SaveChangesAsync();
+  \_context.Categories.Update(category);
+  await \_context.SaveChangesAsync();
 
 ## Notes & gotchas
 
 - No unit tests present in the workspace — add tests under a dedicated test project if needed.
 - Connection string is in `API/appsettings.json` under `ConnectionStrings:DefaultConnection`.
 - When using EF CLI, always pass `--startup-project API` so the app's configuration (connection string, environment) is used.
+
+## Code Quality
+
+- Use meaningful variable and function names that clearly describe their purpose
+- Include helpful comments for complex logic
+- Add error handling for user inputs and API calls
+- Adherence to best practices
 
 If any of these details are incomplete or you'd like runnable snippets (e.g., how to scaffold a new controller+service+repo), tell me which area to expand and I'll update/extend these instructions.
