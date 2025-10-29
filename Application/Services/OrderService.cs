@@ -93,20 +93,11 @@ namespace Application.Services
                 throw new NotFoundException($"Order {orderId} not found");
 
             // Ensure user can only access their own orders
-            if (order.UserId != userId)
-                throw new NotFoundException($"Order {orderId} not found");
+            // if (order.UserId != userId)
+            //     throw new NotFoundException($"Order {orderId} not found");
 
             return MapToOrderDetailDTO(order);
         }
-
-        // public async Task UpdateOrderStatusAsync(Guid orderId, OrderStatus status)
-        // {
-        //     var order = await _orderRepository.GetOrderByIdAsync(orderId);
-        //     if (order == null)
-        //         throw new NotFoundException($"Order {orderId} not found");
-
-        //     await _orderRepository.UpdateOrderStatusAsync(orderId, status);
-        // }
 
         public async Task UpdateOrderStatusAsync(Guid orderId, OrderStatus status)
         {

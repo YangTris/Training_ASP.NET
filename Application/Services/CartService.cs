@@ -21,11 +21,15 @@ namespace Application.Services
         {
             var cart = await _cartRepository.GetCartByUserIdAsync(userId);
 
+            // Return empty cart if none exists
             if (cart == null)
             {
-                // Create cart if it doesn't exist
-                cart = new Cart { UserId = userId };
-                cart = await _cartRepository.CreateCartAsync(cart);
+                return new CartDTO
+                {
+                    Id = Guid.Empty,
+                    UserId = userId,
+                    Items = new List<CartItemDTO>()
+                };
             }
 
             return MapToCartDTO(cart);
