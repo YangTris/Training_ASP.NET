@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\dvtri\\Desktop\\MockTest\\API\\API.csproj": {}
+    "C:\\Users\\dvtri\\Desktop\\MockTest\\API\\API.csproj": {}
   },
   "projects": {
-    "c:\\Users\\dvtri\\Desktop\\MockTest\\API\\API.csproj": {
+    "C:\\Users\\dvtri\\Desktop\\MockTest\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\dvtri\\Desktop\\MockTest\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\dvtri\\Desktop\\MockTest\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\API\\API.csproj",
+        "projectPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\API\\API.csproj",
         "packagesPath": "C:\\Users\\dvtri\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\API\\obj\\",
+        "outputPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dvtri\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,11 +26,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "c:\\Users\\dvtri\\Desktop\\MockTest\\Application\\Application.csproj": {
-                "projectPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Application\\Application.csproj"
+              "C:\\Users\\dvtri\\Desktop\\MockTest\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Application\\Application.csproj"
               },
-              "c:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -93,14 +93,14 @@
         }
       }
     },
-    "c:\\Users\\dvtri\\Desktop\\MockTest\\Application\\Application.csproj": {
+    "C:\\Users\\dvtri\\Desktop\\MockTest\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\dvtri\\Desktop\\MockTest\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\dvtri\\Desktop\\MockTest\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Application\\Application.csproj",
+        "projectPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\dvtri\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Application\\obj\\",
+        "outputPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dvtri\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -115,8 +115,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj": {
-                "projectPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj"
+              "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj"
               }
             }
           }
@@ -156,14 +156,14 @@
         }
       }
     },
-    "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj": {
+    "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj",
+        "projectPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\dvtri\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\obj\\",
+        "outputPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dvtri\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -225,14 +225,14 @@
         }
       }
     },
-    "c:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\dvtri\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dvtri\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -247,8 +247,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj": {
-                "projectPath": "c:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj"
+              "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\dvtri\\Desktop\\MockTest\\Core\\Core.csproj"
               }
             }
           }

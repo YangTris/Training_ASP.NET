@@ -21,12 +21,12 @@ namespace Application.Services
         {
             var cart = await _cartRepository.GetCartByUserIdAsync(userId);
 
-            // if (cart == null)
-            // {
-            //     // Create cart if it doesn't exist
-            //     cart = new Cart { UserId = userId };
-            //     cart = await _cartRepository.CreateCartAsync(cart);
-            // }
+            if (cart == null)
+            {
+                // Create cart if it doesn't exist
+                cart = new Cart { UserId = userId };
+                cart = await _cartRepository.CreateCartAsync(cart);
+            }
 
             return MapToCartDTO(cart);
         }
