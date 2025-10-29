@@ -1,0 +1,72 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+**/bin/
+**/obj/
+
+# Rider
+.idea/
+*.sln.iml
+
+# Visual Studio Code
+.vscode/
+
+# NuGet
+*.nupkg
+packages/
+.nuget/
+
+# EF Migrations (keep migrations source, ignore model snapshots/build artifacts)
+# (no blanket ignore here)
+
+# Publish
+publish/
+PublishProfiles/
+
+# Logs
+*.log
+logs/
+
+# Test results
+TestResults/
+*.trx
+*.coverage
+
+# User secrets / local config (do not commit secrets)
+# Keep appsettings.json if you want to track connection string; ignore dev/local overrides instead
+appsettings.Development.json
+secrets.json
+secrets.*.json
+.env
+
+# Database files
+*.db
+*.mdf
+*.ldf
+
+# OS files
+Thumbs.db
+ehthumbs.db
+.DS_Store
+
+# JetBrains Rider and ReSharper
+**/.idea/
+_ReSharper*/
+*.DotSettings.user
+
+# Dotnet watch/temp
+.watch/
+
+# Others
+*.vspscc
+*.vssscc
+
+# Ignore VS Code recommended extensions' settings folder
+.vscode/

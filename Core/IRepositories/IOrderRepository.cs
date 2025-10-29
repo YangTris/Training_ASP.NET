@@ -11,6 +11,6 @@ namespace Core.IRepositories
         Task<Order?> GetOrderByIdAsync(Guid orderId);
         Task<Order?> GetOrderWithItemsByIdAsync(Guid orderId);
         Task UpdateOrderStatusAsync(Guid orderId, OrderStatus status);
-        Task<IEnumerable<Order>> GetAllOrdersAsync(PaginatedFilterParams filterParams);
+        Task<PaginatedResult<Order>> GetAllOrdersAsync(PaginatedFilterParams filterParams);
     }
 }

@@ -79,10 +79,10 @@ namespace Infrastructure.Repositories
             }
         }
 
-        public async Task<IEnumerable<Order>> GetAllOrdersAsync(PaginatedFilterParams filterParams)
+        public async Task<PaginatedResult<Order>> GetAllOrdersAsync(PaginatedFilterParams filterParams)
         {
             IQueryable<Order> query = _context.Orders
-                .Include(o => o.OrderItems);
+            .Include(o => o.OrderItems);
 
             query = filterParams.SortBy?.ToLower() switch
             {
@@ -97,10 +97,19 @@ namespace Infrastructure.Repositories
                     : query.OrderBy(o => o.OrderDate),
             };
 
-            return await query
-                .Skip((filterParams.PageNumber - 1) * filterParams.PageSize)
-                .Take(filterParams.PageSize)
-                .ToListAsync();
+            var total = await query.CountAsync();
+            var items = await query
+            .Skip((filterParams.PageNumber - 1) * filterParams.PageSize)
+            .Take(filterParams.PageSize)
+            .ToListAsync();
+
+            return new PaginatedResult<Order>
+            {
+                Items = items,
+                TotalItems = total,
+                PageNumber = filterParams.PageNumber,
+                PageSize = filterParams.PageSize
+            };
         }
     }
 }

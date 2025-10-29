@@ -10,6 +10,6 @@ namespace Application.IServices
         Task<PaginatedResult<OrderListDTO>> GetUserOrdersAsync(string userId, PaginatedFilterParams filterParams);
         Task<OrderDetailDTO> GetOrderByIdAsync(string userId, Guid orderId);
         Task UpdateOrderStatusAsync(Guid orderId, OrderStatus status);
-        Task<IEnumerable<OrderListDTO>> GetAllOrdersAsync(PaginatedFilterParams filterParams);
+        Task<PaginatedResult<OrderListDTO>> GetAllOrdersAsync(PaginatedFilterParams filterParams);
     }
 }

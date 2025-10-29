@@ -99,20 +99,67 @@ namespace Application.Services
             return MapToOrderDetailDTO(order);
         }
 
+        // public async Task UpdateOrderStatusAsync(Guid orderId, OrderStatus status)
+        // {
+        //     var order = await _orderRepository.GetOrderByIdAsync(orderId);
+        //     if (order == null)
+        //         throw new NotFoundException($"Order {orderId} not found");
+
+        //     await _orderRepository.UpdateOrderStatusAsync(orderId, status);
+        // }
+
         public async Task UpdateOrderStatusAsync(Guid orderId, OrderStatus status)
         {
             var order = await _orderRepository.GetOrderByIdAsync(orderId);
             if (order == null)
                 throw new NotFoundException($"Order {orderId} not found");
 
+            // Validate status transition
+            ValidateStatusTransition(order.Status, status);
+
             await _orderRepository.UpdateOrderStatusAsync(orderId, status);
         }
 
-        public async Task<IEnumerable<OrderListDTO>> GetAllOrdersAsync(PaginatedFilterParams filterParams)
+        private void ValidateStatusTransition(OrderStatus currentStatus, OrderStatus newStatus)
         {
-            var orders = await _orderRepository.GetAllOrdersAsync(filterParams);
+            // Cannot change status if order is already completed or cancelled
+            if (currentStatus == OrderStatus.Completed)
+                throw new BadRequestException("Cannot change status of a completed order");
 
-            return orders.Select(o => new OrderListDTO
+            if (currentStatus == OrderStatus.Cancelled)
+                throw new BadRequestException("Cannot change status of a cancelled order");
+
+            // Validate allowed transitions
+            var allowedTransitions = new Dictionary<OrderStatus, List<OrderStatus>>
+            {
+                { OrderStatus.Pending, new List<OrderStatus> { OrderStatus.Processing, OrderStatus.Cancelled } },
+                { OrderStatus.Processing, new List<OrderStatus> { OrderStatus.Shipped, OrderStatus.Cancelled } },
+                { OrderStatus.Shipped, new List<OrderStatus> { OrderStatus.Completed, OrderStatus.Cancelled } }
+            };
+
+            if (allowedTransitions.ContainsKey(currentStatus))
+            {
+                if (!allowedTransitions[currentStatus].Contains(newStatus))
+                {
+                    throw new BadRequestException(
+                        $"Invalid status transition from {currentStatus} to {newStatus}. " +
+                        $"Allowed transitions: {string.Join(", ", allowedTransitions[currentStatus])}"
+                    );
+                }
+            }
+
+            // Prevent moving backwards in the workflow (except cancellation)
+            if (newStatus != OrderStatus.Cancelled && newStatus < currentStatus)
+            {
+                throw new BadRequestException($"Cannot move order status backwards from {currentStatus} to {newStatus}");
+            }
+        }
+
+        public async Task<PaginatedResult<OrderListDTO>> GetAllOrdersAsync(PaginatedFilterParams filterParams)
+        {
+            var paginatedOrders = await _orderRepository.GetAllOrdersAsync(filterParams);
+
+            var orderListDTOs = paginatedOrders.Items.Select(o => new OrderListDTO
             {
                 Id = o.Id,
                 UserId = o.UserId,
@@ -121,7 +168,15 @@ namespace Application.Services
                 Status = o.Status,
                 PaymentMethod = o.PaymentMethod,
                 ItemCount = o.OrderItems?.Count ?? 0
-            });
+            }).ToList();
+
+            return new PaginatedResult<OrderListDTO>
+            {
+                Items = orderListDTOs,
+                TotalItems = paginatedOrders.TotalItems,
+                PageNumber = paginatedOrders.PageNumber,
+                PageSize = paginatedOrders.PageSize
+            };
         }
 
         private OrderDetailDTO MapToOrderDetailDTO(Order order)

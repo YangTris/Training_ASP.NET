@@ -75,7 +75,7 @@ namespace API.Controllers
         /// </summary>
         [HttpGet("all")]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<IEnumerable<OrderListDTO>>> GetAllOrders([FromQuery] PaginatedFilterParams filterParams)
+        public async Task<ActionResult<PaginatedResult<OrderListDTO>>> GetAllOrders([FromQuery] PaginatedFilterParams filterParams)
         {
             var orders = await _orderService.GetAllOrdersAsync(filterParams);
             return Ok(orders);
