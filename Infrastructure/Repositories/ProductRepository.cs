@@ -30,7 +30,9 @@ namespace Infrastructure.Repositories
 
         public async Task<PaginatedResult<Product>> GetProductsAsync(PaginatedFilterParams filterParams)
         {
-            IQueryable<Product> query = _context.Products;
+            IQueryable<Product> query = _context.Products
+                .Include(p => p.Images);
+
 
             if (!string.IsNullOrWhiteSpace(filterParams.SearchTerm))
             {
@@ -62,7 +64,9 @@ namespace Infrastructure.Repositories
 
         public async Task<Product?> GetByIdAsync(Guid productId)
         {
-            return await _context.Products.FirstOrDefaultAsync(p => p.Id == productId);
+            return await _context.Products
+                .Include(p => p.Images)
+                .FirstOrDefaultAsync(p => p.Id == productId);
         }
 
         public async Task UpdateAsync(Product product)

@@ -31,16 +31,16 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ProductDTO>> Create([FromBody] ProductDTO productDTO)
+        public async Task<ActionResult<ProductDetailDTO>> Create([FromBody] CreateProductDTO createProductDTO)
         {
-            var created = await _productService.CreateProductAsync(productDTO);
+            var created = await _productService.CreateProductAsync(createProductDTO);
             return CreatedAtAction(nameof(GetById), new { productId = created.Id }, created);
         }
 
         [HttpPut("{productId}")]
-        public async Task<IActionResult> Update(Guid productId, [FromBody] ProductUpdateDTO updateDTO)
+        public async Task<IActionResult> Update(Guid productId, [FromBody] UpdateProductDTO updateProductDTO)
         {
-            await _productService.UpdateProductAsync(productId, updateDTO);
+            await _productService.UpdateProductAsync(productId, updateProductDTO);
             return NoContent();
         }
 

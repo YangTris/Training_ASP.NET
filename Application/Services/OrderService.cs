@@ -85,16 +85,16 @@ namespace Application.Services
             };
         }
 
-        public async Task<OrderDetailDTO> GetOrderByIdAsync(string userId, Guid orderId)
+        public async Task<OrderDetailDTO> GetOrderByIdAsync(string userId, Guid orderId, bool isAdmin = false)
         {
             var order = await _orderRepository.GetOrderWithItemsByIdAsync(orderId);
 
             if (order == null)
                 throw new NotFoundException($"Order {orderId} not found");
 
-            // Ensure user can only access their own orders
-            // if (order.UserId != userId)
-            //     throw new NotFoundException($"Order {orderId} not found");
+            // Ensure user can only access their own orders and admin can view all
+            if (!isAdmin && order.UserId != userId)
+                throw new NotFoundException($"Order {orderId} not found");
 
             return MapToOrderDetailDTO(order);
         }

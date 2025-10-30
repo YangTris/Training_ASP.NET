@@ -55,7 +55,8 @@ namespace API.Controllers
         public async Task<ActionResult<OrderDetailDTO>> GetOrderById(Guid orderId)
         {
             var userId = GetUserId();
-            var order = await _orderService.GetOrderByIdAsync(userId, orderId);
+            var isAdmin = User.IsInRole("Admin");
+            var order = await _orderService.GetOrderByIdAsync(userId, orderId, isAdmin);
             return Ok(order);
         }
 

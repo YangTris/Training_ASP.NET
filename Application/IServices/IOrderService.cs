@@ -8,7 +8,7 @@ namespace Application.IServices
     {
         Task<OrderDetailDTO> CreateOrderFromCartAsync(string userId, CreateOrderDTO createOrderDTO);
         Task<PaginatedResult<OrderListDTO>> GetUserOrdersAsync(string userId, PaginatedFilterParams filterParams);
-        Task<OrderDetailDTO> GetOrderByIdAsync(string userId, Guid orderId);
+        Task<OrderDetailDTO> GetOrderByIdAsync(string userId, Guid orderId, bool isAdmin = false);
         Task UpdateOrderStatusAsync(Guid orderId, OrderStatus status);
         Task<PaginatedResult<OrderListDTO>> GetAllOrdersAsync(PaginatedFilterParams filterParams);
     }

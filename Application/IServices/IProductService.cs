@@ -5,10 +5,10 @@ namespace Application.IServices
 {
     public interface IProductService
     {
-        Task<ProductDTO> CreateProductAsync(ProductDTO productDTO);
+        Task<ProductDetailDTO> CreateProductAsync(CreateProductDTO createProductDTO);
         Task DeleteProductAsync(Guid productId);
         Task<PaginatedResult<ProductListDTO>> GetAllProductsAsync(PaginatedFilterParams filterParams);
         Task<ProductDetailDTO?> GetProductByIdAsync(Guid productId);
-        Task UpdateProductAsync(Guid productId, ProductUpdateDTO productUpdateDTO);
+        Task UpdateProductAsync(Guid productId, UpdateProductDTO updateProductDTO);
     }
 }
