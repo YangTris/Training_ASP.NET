@@ -66,7 +66,7 @@ namespace API.Middlewares
             var response = new
             {
                 statusCode = context.Response.StatusCode,
-                error = logMessage,
+                message = logMessage,
                 timestamp = DateTime.UtcNow
             };
 

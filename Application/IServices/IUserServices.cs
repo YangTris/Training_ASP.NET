@@ -7,8 +7,8 @@ namespace Application.IServices
     {
         Task<PaginatedResult<UserListDTO>> GetUser(PaginatedFilterParams filterParams);
         Task<UserDetailDTO?> GetUserByIdAsync(string id);
-        Task<UserCreateResponseDTO> CreateUserAsync(UserCreateRequestDTO userCreateRequestDTO);
-        Task UpdateUserAsync(string userId, UserUpdateDTO user);
+        Task<UserDetailDTO> CreateUserAsync(CreateUserDTO createUserDTO);
+        Task UpdateUserAsync(string userId, UpdateUserDTO updateUserDTO);
         Task DeleteUserAsync(string id);
         Task AssignRoleAsync(string userId, string role);
     }

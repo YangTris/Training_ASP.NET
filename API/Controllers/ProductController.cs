@@ -17,7 +17,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductListDTO>>> GetAll([FromQuery] PaginatedFilterParams filterParams)
+        public async Task<ActionResult<PaginatedResult<ProductListDTO>>> GetAll([FromQuery] PaginatedFilterParams filterParams)
         {
             var products = await _productService.GetAllProductsAsync(filterParams);
             return Ok(products);

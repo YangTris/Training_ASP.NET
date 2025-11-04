@@ -48,9 +48,9 @@ namespace API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] UserCreateRequestDTO dto)
+        public async Task<ActionResult<UserDetailDTO>> Register([FromBody] CreateUserDTO createUserDTO)
         {
-            var created = await _userService.CreateUserAsync(dto);
+            var created = await _userService.CreateUserAsync(createUserDTO);
             return CreatedAtAction("GetUserById", "User", new { id = created.Id }, created);
         }
 

@@ -4,10 +4,10 @@ namespace Application.IServices
 {
     public interface ICategoryService
     {
-        Task<CategoryDTO> CreateCategoryAsync(CategoryDTO categoryDTO);
+        Task<CategoryDetailDTO> CreateCategoryAsync(CreateCategoryDTO createCategoryDTO);
         Task DeleteCategoryAsync(Guid categoryId);
         Task<IEnumerable<CategoryListDTO>> GetAllCategoriesAsync();
         Task<CategoryDetailDTO?> GetCategoryByIdAsync(Guid categoryId);
-        Task UpdateCategoryAsync(Guid categoryId, CategoryUpdateDTO categoryUpdateDTO);
+        Task UpdateCategoryAsync(Guid categoryId, UpdateCategoryDTO updateCategoryDTO);
     }
 }

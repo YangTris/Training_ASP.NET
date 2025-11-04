@@ -32,9 +32,9 @@ namespace API.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<CategoryDTO>> CreateCategory([FromBody] CategoryDTO categoryDTO)
+        public async Task<ActionResult<CategoryDetailDTO>> CreateCategory([FromBody] CreateCategoryDTO createCategoryDTO)
         {
-            var createdCategory = await _categoryService.CreateCategoryAsync(categoryDTO);
+            var createdCategory = await _categoryService.CreateCategoryAsync(createCategoryDTO);
             return CreatedAtAction(nameof(GetCategoryById),
                 new { categoryId = createdCategory.Id },
                 createdCategory);
@@ -42,9 +42,9 @@ namespace API.Controllers
 
         [HttpPut("{categoryId}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> UpdateCategory(Guid categoryId, [FromBody] CategoryUpdateDTO categoryUpdateDTO)
+        public async Task<IActionResult> UpdateCategory(Guid categoryId, [FromBody] UpdateCategoryDTO updateCategoryDTO)
         {
-            await _categoryService.UpdateCategoryAsync(categoryId, categoryUpdateDTO);
+            await _categoryService.UpdateCategoryAsync(categoryId, updateCategoryDTO);
             return NoContent();
         }
 

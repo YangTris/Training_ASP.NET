@@ -1,10 +1,9 @@
 namespace Application.DTOs.User
 {
-    public class UserCreateResponseDTO
+    public class CreateUserDTO
     {
-        public string Id { get; set; } = string.Empty;
         public string FullName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
-        public DateTimeOffset CreatedAt { get; set; }
+        public string Password { get; set; } = string.Empty;
     }
 }

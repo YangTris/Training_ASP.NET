@@ -30,33 +30,35 @@ namespace Application.Services
             await _userRepository.AssignRoleAsync(existingUser, role);
         }
 
-        public async Task<UserCreateResponseDTO> CreateUserAsync(UserCreateRequestDTO userCreateRequestDTO)
+        public async Task<UserDetailDTO> CreateUserAsync(CreateUserDTO createUserDTO)
         {
             var emailValidator = new System.ComponentModel.DataAnnotations.EmailAddressAttribute();
-            if (string.IsNullOrWhiteSpace(userCreateRequestDTO.Email) || !emailValidator.IsValid(userCreateRequestDTO.Email))
+            if (string.IsNullOrWhiteSpace(createUserDTO.Email) || !emailValidator.IsValid(createUserDTO.Email))
                 throw new BadRequestException("Email is not a valid email address.");
 
-            var existingByEmail = await _userManager.FindByEmailAsync(userCreateRequestDTO.Email);
+            var existingByEmail = await _userManager.FindByEmailAsync(createUserDTO.Email);
             if (existingByEmail != null)
-                throw new ConflictException($"Email {userCreateRequestDTO.Email} is already in use.");
+                throw new ConflictException($"Email {createUserDTO.Email} is already in use.");
 
             var user = new User
             {
-                FullName = userCreateRequestDTO.FullName,
-                Email = userCreateRequestDTO.Email,
-                UserName = userCreateRequestDTO.Email
+                FullName = createUserDTO.FullName,
+                Email = createUserDTO.Email,
+                UserName = createUserDTO.Email
             };
 
-            var createdUser = await _userRepository.CreateAsync(user, userCreateRequestDTO.Password);
+            var createdUser = await _userRepository.CreateAsync(user, createUserDTO.Password);
 
             await _userRepository.AssignRoleAsync(createdUser, "User");
 
-            return new UserCreateResponseDTO
+            return new UserDetailDTO
             {
                 Id = createdUser.Id,
                 FullName = createdUser.FullName,
                 Email = createdUser.Email ?? string.Empty,
-                CreatedAt = createdUser.CreatedAt
+                CreatedAt = createdUser.CreatedAt,
+                PhoneNumber = createdUser.PhoneNumber ?? string.Empty,
+                OrderDetailDTOs = new List<OrderDetailDTO>()
             };
         }
 
@@ -114,7 +116,7 @@ namespace Application.Services
             return userDetailDTO;
         }
 
-        public async Task UpdateUserAsync(string userId, UserUpdateDTO user)
+        public async Task UpdateUserAsync(string userId, UpdateUserDTO updateUserDTO)
         {
             var existingUser = await _userRepository.GetByIdAsync(userId);
             if (existingUser == null)
@@ -122,9 +124,9 @@ namespace Application.Services
                 throw new NotFoundException($"User {userId} not found");
             }
 
-            existingUser.SetUser(user.FullName);
-            existingUser.Email = user.Email;
-            existingUser.PhoneNumber = user.PhoneNumber;
+            existingUser.SetUser(updateUserDTO.FullName);
+            existingUser.Email = updateUserDTO.Email;
+            existingUser.PhoneNumber = updateUserDTO.PhoneNumber;
 
             await _userRepository.UpdateAsync(existingUser);
         }

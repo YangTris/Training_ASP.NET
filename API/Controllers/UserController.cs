@@ -41,17 +41,10 @@ namespace API.Controllers
             return NoContent();
         }
 
-        // [HttpPost]
-        // public async Task<IActionResult> CreateUser([FromBody] UserCreateRequestDTO userCreateRequestDTO)
-        // {
-        //     var createdUser = await _userService.CreateUserAsync(userCreateRequestDTO);
-        //     return CreatedAtAction(nameof(GetUserById), new { id = createdUser.Id }, createdUser);
-        // }
-
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(string id, [FromBody] UserUpdateDTO userUpdateDto)
+        public async Task<IActionResult> UpdateUser(string id, [FromBody] UpdateUserDTO updateUserDTO)
         {
-            await _userService.UpdateUserAsync(id, userUpdateDto);
+            await _userService.UpdateUserAsync(id, updateUserDTO);
             return NoContent();
         }
 

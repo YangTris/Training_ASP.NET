@@ -14,21 +14,24 @@ namespace Application.Services
         {
             _categoryRepository = categoryRepository;
         }
-        public async Task<CategoryDTO> CreateCategoryAsync(CategoryDTO categoryDTO)
+        public async Task<CategoryDetailDTO> CreateCategoryAsync(CreateCategoryDTO createCategoryDTO)
         {
             var category = new Category
             {
-                Name = categoryDTO.Name,
-                Description = categoryDTO.Description
+                Name = createCategoryDTO.Name,
+                Description = createCategoryDTO.Description
             };
 
             var created = await _categoryRepository.CreateAsync(category);
 
-            return new CategoryDTO
+            return new CategoryDetailDTO
             {
                 Id = created.Id,
                 Name = created.Name,
-                Description = created.Description
+                Description = created.Description,
+                IsDeleted = created.IsDeleted,
+                CreatedAt = created.CreatedAt,
+                Products = new List<ProductListDTO>()
             };
         }
 
@@ -77,15 +80,15 @@ namespace Application.Services
             };
         }
 
-        public async Task UpdateCategoryAsync(Guid categoryId, CategoryUpdateDTO categoryUpdateDTO)
+        public async Task UpdateCategoryAsync(Guid categoryId, UpdateCategoryDTO updateCategoryDTO)
         {
             var existingCategory = await _categoryRepository.GetByIdAsync(categoryId);
             if (existingCategory == null)
             {
                 throw new NotFoundException($"Category {categoryId} not found");
             }
-            existingCategory.Name = categoryUpdateDTO.Name;
-            existingCategory.Description = categoryUpdateDTO.Description;
+            existingCategory.Name = updateCategoryDTO.Name;
+            existingCategory.Description = updateCategoryDTO.Description;
 
             await _categoryRepository.UpdateAsync(existingCategory);
         }
