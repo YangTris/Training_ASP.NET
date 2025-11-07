@@ -1,4 +1,4 @@
-using System;
+using Microsoft.AspNetCore.Http;
 
 namespace Application.DTOs.Product
 {
@@ -8,5 +8,10 @@ namespace Application.DTOs.Product
         public string? Description { get; set; }
         public decimal Price { get; set; }
         public Guid CategoryId { get; set; }
+        
+        /// <summary>
+        /// Product images - at least one image is required
+        /// </summary>
+        public List<IFormFile> Images { get; set; } = new List<IFormFile>();
     }
 }

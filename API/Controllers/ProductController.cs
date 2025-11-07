@@ -1,5 +1,6 @@
 using Application.DTOs.Product;
 using Application.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Models;
 
@@ -31,13 +32,16 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ProductDetailDTO>> Create([FromBody] CreateProductDTO createProductDTO)
+        [Consumes("multipart/form-data")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult<ProductDetailDTO>> Create([FromForm] CreateProductDTO createProductDTO)
         {
             var created = await _productService.CreateProductAsync(createProductDTO);
             return CreatedAtAction(nameof(GetById), new { productId = created.Id }, created);
         }
 
         [HttpPut("{productId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(Guid productId, [FromBody] UpdateProductDTO updateProductDTO)
         {
             await _productService.UpdateProductAsync(productId, updateProductDTO);
@@ -45,6 +49,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("{productId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(Guid productId)
         {
             await _productService.DeleteProductAsync(productId);

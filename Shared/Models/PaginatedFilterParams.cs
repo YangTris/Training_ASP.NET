@@ -6,6 +6,6 @@ namespace Shared.Models
         public int PageSize { get; set; } = 8;
         public string? SearchTerm { get; set; }
         public string? SortBy { get; set; } = "CreatedAt";
-        public bool IsDescending { get; set; } = false;
+        public bool IsDescending { get; set; } = true;
     }
 }

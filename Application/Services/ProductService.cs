@@ -11,19 +11,21 @@ namespace Application.Services
     {
         private readonly IProductRepository _productRepository;
         private readonly ICategoryRepository _categoryRepository;
+        private readonly IFileStorageService _fileStorageService;
 
-        public ProductService(IProductRepository productRepository, ICategoryRepository categoryRepository)
+        public ProductService(
+            IProductRepository productRepository,
+            ICategoryRepository categoryRepository,
+            IFileStorageService fileStorageService)
         {
             _productRepository = productRepository;
             _categoryRepository = categoryRepository;
+            _fileStorageService = fileStorageService;
         }
 
         public async Task<ProductDetailDTO> CreateProductAsync(CreateProductDTO createProductDTO)
         {
-            var categoryExists = await _categoryRepository.GetByIdAsync(createProductDTO.CategoryId);
-            if (categoryExists == null)
-                throw new NotFoundException($"Category {createProductDTO.CategoryId} does not exist");
-
+            // Validate input
             if (createProductDTO == null)
                 throw new BadRequestException("Product data is required");
             if (string.IsNullOrWhiteSpace(createProductDTO.Name))
@@ -31,20 +33,49 @@ namespace Application.Services
             if (createProductDTO.Price < 0)
                 throw new BadRequestException("Price cannot be negative");
 
+            // Validate images - at least one required
+            if (createProductDTO.Images == null || createProductDTO.Images.Count == 0)
+                throw new BadRequestException("At least one product image is required");
+
+            // Validate all images
+            foreach (var imageFile in createProductDTO.Images)
+            {
+                if (!_fileStorageService.IsValidImage(imageFile))
+                {
+                    throw new BadRequestException(
+                        $"Invalid image file '{imageFile.FileName}'. Allowed formats: .jpg, .jpeg, .png, .gif, .webp. Max size: 5MB"
+                    );
+                }
+            }
+
+            // Validate category exists
+            var categoryExists = await _categoryRepository.GetByIdAsync(createProductDTO.CategoryId);
+            if (categoryExists == null)
+                throw new NotFoundException($"Category {createProductDTO.CategoryId} does not exist");
+
+            // Upload images to Supabase
+            List<string> imageUrls;
+            try
+            {
+                imageUrls = await _fileStorageService.UploadFilesAsync(createProductDTO.Images, "products");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Failed to upload product images: {ex.Message}", ex);
+            }
+
+            // Create product entity with uploaded images
             var product = new Product
             {
                 Name = createProductDTO.Name,
                 Description = createProductDTO.Description,
                 Price = createProductDTO.Price,
                 CategoryId = createProductDTO.CategoryId,
-                Images = new List<ProductImage>
+                Images = imageUrls.Select((url, index) => new ProductImage
                 {
-                    new ProductImage
-                    {
-                        ImageUrl = "https://vyghvmdysxqvocgvytoe.supabase.co/storage/v1/object/public/Training_img/default_img.jpg",
-                        IsMain = true
-                    }
-                }
+                    ImageUrl = url,
+                    IsMain = index == 0
+                }).ToList()
             };
 
             var created = await _productRepository.CreateAsync(product);
@@ -121,7 +152,6 @@ namespace Application.Services
                 }) ?? Enumerable.Empty<ProductImageDTO>()
             };
         }
-
         public async Task UpdateProductAsync(Guid productId, UpdateProductDTO updateProductDTO)
         {
             var existing = await _productRepository.GetByIdAsync(productId);
